@@ -5,8 +5,13 @@
   padding-left: 26px;
   display: flex;
   align-items: center;
-
+  justify-content: space-between;
   .headerTitle {
     margin: 0;
+  }
+
+  .image-icon {
+    width: 25px;
+    height: 25px;
   }
 }
