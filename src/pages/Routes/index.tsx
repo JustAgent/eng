@@ -48,7 +48,7 @@ export const RoutesPage: React.FC = () => {
       try {
         const response = await axios.get("http://localhost:3000/routes");
         const data: RoutesResponse[] = response.data;
-        // if (data) setroutes(data);
+        if (data) setroutes(data);
       } catch (error) {
         console.error("Ошибка routes:", error);
       }

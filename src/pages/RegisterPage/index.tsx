@@ -1,8 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
-import "./LogInPage.scss";
+import "./AuthPage.scss";
 import { Header } from "../../components/Header";
-import {MockLogin, MockPassword} from "../../shared/providers/Auth/AuthProvider.tsx";
 
 interface FormData {
   name: string;
@@ -12,12 +11,12 @@ interface FormData {
   email: string;
   password: string;
 }
-interface LoginPageProps {
+
+interface RegisterPageProps {
   onAuth?: () => void
 }
 
-
-export const LogInPage = ({ onAuth }: LoginPageProps) => {
+export const RegisterPage = ({ onAuth }: RegisterPageProps) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     surname: "",
@@ -37,11 +36,6 @@ export const LogInPage = ({ onAuth }: LoginPageProps) => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (formData.email === MockLogin && formData.password === MockPassword) {
-      onAuth?.()
-
-      return
-    }
     try {
       const response = await axios.post(
         "http://localhost:3000/users",
@@ -53,15 +47,61 @@ export const LogInPage = ({ onAuth }: LoginPageProps) => {
       onAuth?.()
     } catch (error) {
       console.error("Ошибка авторизации:", error);
+      onAuth?.()
     }
   };
 
   return (
-    <div style={{width:'100%', height:'100vh'}}>
-      <Header text={"WeWalk"} />
+    <div>
+      {" "}
+      <Header text={"WeWalk"}/>
       <div className="authWrapper">
         <div className="formContainer">
           <form onSubmit={handleSubmit}>
+            <div className="inputGroup">
+              <label htmlFor="name">Name:</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="inputGroup">
+              <label htmlFor="surname">Surname:</label>
+              <input
+                type="text"
+                name="surname"
+                id="surname"
+                value={formData.surname}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="inputGroup">
+              <label htmlFor="birthday">Birthday:</label>
+              <input
+                type="date"
+                name="birthday"
+                id="birthday"
+                value={formData.birthday}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="inputGroup">
+              <label htmlFor="phoneNumber">Phone number:</label>
+              <input
+                type="tel"
+                name="phoneNumber"
+                id="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleChange}
+                required
+              />
+            </div>
             <div className="inputGroup">
               <label htmlFor="email">Login:</label>
               <input
@@ -83,7 +123,7 @@ export const LogInPage = ({ onAuth }: LoginPageProps) => {
                 required
               />
             </div>
-            <button type="submit">Log in</button>
+            <button type="submit">Register</button>
           </form>
         </div>
       </div>
