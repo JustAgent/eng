@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "f5a1",
+      "name": "weqfwefw",
+      "surname": "wefwefw",
+      "birthday": "2008-05-07",
+      "phoneNumber": "+79119062013",
+      "email": "newTest@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "6610",
+      "name": "weqfwefw",
+      "surname": "wefwefw",
+      "birthday": "2008-05-07",
+      "phoneNumber": "+79119062013",
+      "email": "newTest@gmail.com",
+      "password": "12345"
+    }
+  ]
+}
